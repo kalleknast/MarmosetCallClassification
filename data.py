@@ -1,6 +1,5 @@
 import scipy.io
 import h5py
-import tensorflow as tf
 from scipy.io import wavfile
 import numpy as np
 import os
@@ -26,21 +25,27 @@ def convertfiles_mat_to_wav(mat_dir, wav_dir, fname_labels):
     for fname_mat in fnames_mat:
         for fn_sound in fname_mat['sound']:
             fname_wav = fn_sound.split(os.sep)[-1].replace('.mat', '.wav')
-            samplerate = mat_to_wav(fn_sound, f'{wav_dir}{os.sep}{fname_wav}')
+            samplerate, duration = mat_to_wav(fn_sound,
+                                              f'{wav_dir}{os.sep}{fname_wav}')
 
-            labels = read_mat_labels(fname_mat['label'], fname_wav, samplerate)
+            labels = read_mat_labels(fname_mat['label'],
+                                     fname_wav,
+                                     samplerate,
+                                     duration)
             if len(labels):
                 write_labels_to_csv(fname_labels, labels)
 
 
-def read_mat_labels(fname, fname_wav, samplerate):
+def read_mat_labels(fname, fname_wav, samplerate, wav_duration):
     """
     Reads MAT files with labels into a labels list for
     subsequent writing to csv.
 
     Argument
     --------
-    fname : File name of MAT file with labels
+    fname       : File name of MAT file with labels
+    fname_mat   : File name of the WAV file with audio.
+    samplerate  : samplerate
 
     Return
     ------
@@ -79,8 +84,9 @@ def read_mat_labels(fname, fname_wav, samplerate):
             labels.append({'filename_wav': fname_wav,
                            'time_on': onsets[i],
                            'time_off': offsets[i],
-                           'call_type': call_types[i],
-                           'caller_id': caller_ids[i]})
+                           'call_type': int(call_types[i]),
+                           'caller_id': int(caller_ids[i]),
+                           'wav_duration': wav_duration})
 
     return labels
 
@@ -98,6 +104,7 @@ def write_labels_to_csv(fname, labels):
         call_type: (int) phee: 49; twitter: 50; trill: 51; cry: 52;
                          subharmonic phee: 53; cry-phee: 54.
         caller_id: (int) identity of the caller.
+        wav_duration: (float) the duration of the recording
     """
     if os.path.isfile(fname):
         mode = 'a'
@@ -164,8 +171,9 @@ def mat_to_wav(fname_mat, fname_wav):
             return
 
         samplerate = int(f['Fs'][0])
+        duration = np.max(y.shape) / samplerate
         wavfile.write(fname_wav,
                       samplerate,
                       (y * max_amplitude).astype(np.int16))
 
-        return samplerate
+        return samplerate, duration
