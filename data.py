@@ -9,6 +9,42 @@ import csv
 DATA_DIR = f'{os.path.expanduser("~")}/Python/MarmosetCallClassification/data'
 
 
+def audiolen_to_specgramlen(audio_len, frame_len, frame_step):
+    """
+    WRONG when audio_len / frame_step has a reminder of .6
+    WHY?
+    
+    Test:
+    ----
+
+    1.
+        audio_len = 60377280
+        spectrogram.shape = (90144, 769)
+        specgram_len == 94338
+
+    2.
+        audio_len = 57692544
+        spectrogram.shape = (90144, 769)
+        specgram_len == 90143
+    3.
+        audio_len = 59538816
+        spectrogram.shape = (93028, 769)
+        specgram_len == 93028
+    4.
+        audio_len = 60273024
+        spectrogram.shape = (94176, 769)
+        specgram_len == 94175
+    5.
+        audio_len = 60273024
+        spectrogram.shape = (94338, 769)
+        specgram_len == 94338
+    """
+
+    specgram_len = int(audio_len / frame_step) - 1
+
+    return specgram_len
+
+
 def convertfiles_mat_to_wav(mat_dir, wav_dir, fname_labels):
     """
     Arguments

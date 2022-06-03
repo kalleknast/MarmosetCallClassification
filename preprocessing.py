@@ -4,15 +4,15 @@ import pandas as pd
 import numpy as np
 
 # An integer scalar Tensor. The window length in samples.
-frame_length = 512 * 2
+frame_len = 512 * 2
 # An integer scalar Tensor. The number of samples to step.
 frame_step = 320 * 2
 # An integer scalar Tensor. The size of the FFT to apply.
-# If not provided, uses the smallest power of 2 enclosing frame_length.
-fft_length = 768 * 2
+# If not provided, uses the smallest power of 2 enclosing frame_len.
+fft_len = 768 * 2
 
 
-def label_times_to_labels(fname_labels, samplerate=96000):
+def calltimes_to_labels(fname_labels, samplerate=96000):
     """
     """
     label_times = pd.read_csv(fname_labels)
@@ -41,6 +41,9 @@ def label_times_to_labels(fname_labels, samplerate=96000):
 
 def encode_single_sample(fname_wav, labels):
     """
+    fname_wav -
+    labels    -
+
     """
     ###########################################
     # Process the Audio
@@ -54,9 +57,9 @@ def encode_single_sample(fname_wav, labels):
     audio = tf.cast(audio, tf.float32)
     # 4. Get the spectrogram
     spectrogram = tf.signal.stft(audio,
-                                 frame_length=frame_length,
+                                 frame_len=frame_len,
                                  frame_step=frame_step,
-                                 fft_length=fft_length)
+                                 fft_len=fft_len)
     # 5. We only need the magnitude, which can be derived by applying tf.abs
     spectrogram = tf.abs(spectrogram)
     spectrogram = tf.math.pow(spectrogram, 0.5)
