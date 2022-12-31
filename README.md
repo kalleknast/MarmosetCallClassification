@@ -28,8 +28,7 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
     output_dir = "</path/to/where/the/organizing/CSV-file/should/be/stored>"
     spect_output_dir = "</path/to/where/the/spectrograms/should/be/stored>"
     [PREDICT]
-    device = <"cpu" or "cuda">
-    num_workers = <number of cpu threads used to load data>
+    device = "cpu" or "cuda"
     checkpoint_path = "</path/to/the/model/TweetyNet/checkpoints/max-val-acc-checkpoint.pt>"
     labelmap_path = "</path/to/the/model/labelmap.json>"
     spect_scaler_path = "</path/to/the/model/StandardizeSpect>"
