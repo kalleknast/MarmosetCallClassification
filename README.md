@@ -22,7 +22,7 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
 
 ## Use
  1. Edit the configuration file `predict_config.toml` so that the paths point to the correct locations.
-```
+```toml
     [PREP]
     data_dir = "</path/to/the/WAV-files/to/run/the/model/on>"
     output_dir = "</path/to/where/the/organizing/CSV-file/should/be/stored>"
