@@ -22,6 +22,7 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
 
 ## Use
  1. Edit the configuration file `predict_config.toml` so that the paths point to the correct locations.
+ '''toml
     [PREP]
     data_dir = "</path/to/the/WAV-files/to/run/the/model/on>"
     output_dir = "</path/to/where/the/organizing/CSV-file/should/be/stored>"
@@ -35,6 +36,7 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
     output_dir = "</dir/where/the/resulting/CSV-file/should/be/stored>"
     annot_csv_filename = "<name of the CSV-file with the predictions>.csv"
     csv_path = "</path/to/the/organizing/CSV-file/>.csv"
+'''    
  2. Pre-process the WAV-files: `vak prep predict_config.toml`
  3. Predict: `vak predict predict_config.toml`. The resulting CSV file should be located and named according to `annot_csv_filename` above.
  4. (Optional) Plot the predictions for manual inspection: `python plot <annot_csv_filename> <spec_dir>`
