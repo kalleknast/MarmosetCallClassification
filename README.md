@@ -35,6 +35,7 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
     output_dir = "</dir/where/the/resulting/CSV-file/should/be/stored>"
     annot_csv_filename = "<name of the CSV-file with the predictions>.csv"
 ```
+`predict_example.toml` provides and example with paths relative to the working directory and assuming the directories `data/WAV`, `data/preprocessed` and `results/predictions`.
  2. Pre-process the WAV-files: `vak prep predict.toml`
  3. Predict: `vak predict predict.toml`. The resulting CSV file should be located and named according to `annot_csv_filename` above.
  4. (Optional) Plot the predictions for manual inspection: `python plot <annot_csv_filename> <spec_dir>`
