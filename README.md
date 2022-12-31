@@ -34,7 +34,6 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
     spect_scaler_path = "</path/to/the/model/>StandardizeSpect"
     output_dir = "</dir/where/the/resulting/CSV-file/should/be/stored>"
     annot_csv_filename = "<name of the CSV-file with the predictions>.csv"
-    csv_path = "</path/to/the/organizing/CSV-file/>.csv"
 ```
  2. Pre-process the WAV-files: `vak prep predict.toml`
  3. Predict: `vak predict predict.toml`. The resulting CSV file should be located and named according to `annot_csv_filename` above.
