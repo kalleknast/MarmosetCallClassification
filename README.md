@@ -1,7 +1,7 @@
 # MarmosetCallClassification
 Classification of marmoset vocalizations
 
-The [model **link here**] gets 96% correct on the test set.
+The [model](https://snapassamusay.files.wordpress.com/2023/01/model.zip) gets 96% correct on the test set.
 
 ## Performance
 
@@ -11,17 +11,17 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
 |---------|-----------|------|-----|
 | 0.9618	| 195.1 | 0.1217 | 0.3174 |
 
-* Recorded and labeled by Daneil Y. Takahashi and colleauges
+* Recorded and labeled by Daniel Y. Takahashi and colleauges. See [Takahashi, D. Y., Fenley, A. R., Teramoto, Y., Narayanan, D. Z., Borjon, J. I., Holmes, P., & Ghazanfar, A. A. (2015). The developmental dynamics of marmoset monkey vocal production. Science, 349(6249), 734-738.](http://www.princeton.edu/~dtakahas/publications/Takahashi%20et%20al%202015%20Developmental%20dynamics%20vocalization) for details.
 
 ## Installation
 
  1. Install [vak](https://github.com/vocalpy/vak).
- 2. Download the [model **link here**] and extract the ZIP archive.
+ 2. Download the [model](https://snapassamusay.files.wordpress.com/2023/01/model.zip) and extract the ZIP archive.
  3. Set the paths in `predict_config.toml` to point to the model.
 
 
 ## Use
- 1. Edit the configuration file `predict.toml` so that the paths point to the correct locations. `predict_example.toml` provides and example with paths relative to the working directory and assuming the directories `data/WAV`, `data/preprocessed` and `results/predictions`.
+ 1. Prepare directories and the configuration file. Either by creating the directories (relative to your working directory) in `predict_example.toml` (`data/WAV`, `data/preprocessed` and `results/predictions`), or by editing the configuration file `predict.toml` so that the paths point to the correct locations.
 ```toml
     [PREP]
     data_dir = "</path/to/the/WAV-files/to/run/the/model/on>"
