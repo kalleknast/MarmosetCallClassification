@@ -17,8 +17,7 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
 
  1. Install [vak](https://github.com/vocalpy/vak).
  2. Download the [model](https://snapassamusay.files.wordpress.com/2023/01/model.zip) and extract the ZIP archive.
- 3. Set the paths in `predict_config.toml` to point to the model.
-
+ 
 
 ## Use
  1. Prepare directories and the configuration file. Either by creating the directories (relative to your working directory) in `predict_example.toml` (`data/WAV`, `data/preprocessed` and `results/predictions`), or by editing the configuration file `predict.toml` so that the paths point to the correct locations.
