@@ -36,5 +36,5 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
 ```
  2. Pre-process the WAV-files: `vak prep predict.toml`
  3. Predict: `vak predict predict.toml`. The resulting CSV file should be located and named according to `annot_csv_filename` above.
- 4. (Optional) Plot the predictions for manual inspection: `python plot <annot_csv_filename> <spec_dir>`
+ 4. (Optional) Plot the predictions for manual inspection: `python3 plot.py <annot_csv_filename> <spec_dir> <fig_dir> --plot_dur 10 --mark_onsets --mark_offsets`.
 
