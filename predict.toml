@@ -20,7 +20,7 @@ window_size = 800
 [PREDICT]
 device = "cuda"
 num_workers = 2
-models = [ "TweetyNet",]
+models = [ "TweetyNetModel",]
 batch_size = 128
 checkpoint_path = "</path/to/the/model/TweetyNet/checkpoints/max-val-acc-checkpoint.pt>"
 labelmap_path = "</path/to/the/model/>labelmap.json"
@@ -28,5 +28,5 @@ spect_scaler_path = "</path/to/the/model/>StandardizeSpect"
 output_dir = "</dir/where/the/resulting/CSV-file/should/be/stored>"
 annot_csv_filename = "<name of the CSV-file with the predictions>.csv"
 
-[TweetyNet.network]
+[TweetyNetModel.network]
 hidden_size = 512
