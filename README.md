@@ -15,8 +15,8 @@ Performance of the TweetyNet model trained on marmoset vocalizations*:
 
 ## Installation
 
- 1. Install [vak](https://github.com/vocalpy/vak).
- 2. Download the [model](https://snapassamusay.files.wordpress.com/2023/01/model.zip) and extract the ZIP archive.
+ 1. Install [vak](https://github.com/vocalpy/vak) version >= 0.8.
+ 2. Download the [marmoset call classfication model](https://snapassamusay.files.wordpress.com/2023/01/model.zip) and extract the ZIP archive.
  
 
 ## Use
