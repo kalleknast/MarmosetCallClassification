@@ -3,6 +3,7 @@
 Plotting for MarmosetCallClassification
 '''
 import argparse
+import os
 import os.path as osp
 from glob import glob
 import numpy as np
@@ -54,6 +55,11 @@ def plot_predictions(annot_csv_path, spec_dir, fig_dir, plot_dur=10,
     if not osp.isdir(fig_dir):
         raise FileNotFoundError(f'The directory {fig_dir} does not exist.',
                                  ' Please create it.')
+
+    fig_dir = osp.join(fig_dir, f'{plot_dur}s')
+    # Make sure that the sub directory <plot_dur>s exists.
+    if not osp.isdir(fig_dir):
+        os.mkdir(fig_dir)
 
     for spec_fname in spec_fnames:
 
@@ -109,7 +115,7 @@ def plot_predictions(annot_csv_path, spec_dir, fig_dir, plot_dur=10,
             ax.legend(loc='upper right')
             ax.set_title(f'Recording: {name.rstrip(".wav")} -- Interval: {t0} s to {t1} s')
             fname = f'{name.rstrip(".wav")}_{int(t0):04}s-{int(t1):04}s.png'               
-            fig.savefig(osp.join(fig_dir, f'{plot_dur}s', fname))
+            fig.savefig(osp.join(fig_dir, fname))
             plt.close(fig)
 
 
